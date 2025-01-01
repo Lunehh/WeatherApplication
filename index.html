@@ -13,22 +13,22 @@
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Weather App</h1>
-        <div class="input-group mb-3">
-            <input type="text" id="city" class="form-control" placeholder="Enter City">
+        <div class="input-group mb-3" id="search-container">
+            <input type="text" id="city" class="form-control rounded-pill" placeholder="Enter City">
             <div class="input-group-append">
-                <button id="search" class="btn btn-primary">Search</button>
+                <button id="search" class="btn btn-primary rounded-pill">Search</button>
             </div>
         </div>
-        <button id="geolocation" class="btn btn-secondary">Use My Location</button>
-        <button id="toggle-mode" class="btn btn-light">Switch to Dark Mode</button>
+        <button id="geolocation" class="btn btn-secondary rounded-pill">Use My Location</button>
+        <button id="toggle-mode" class="btn btn-light rounded-pill">Switch to Dark Mode</button>
 
-        <div id="weather-info" class="hidden text-center">
+        <div id="weather-info" class="hidden text-center mt-4">
             <h2 id="city-name"></h2>
             <p id="temperature" class="lead"></p>
             <p id="description"></p>
             <img id="weather-icon" src="" alt="">
         </div>
-        
+
         <div id="forecast-info" class="hidden text-center mt-4">
             <h3>5-Day Forecast</h3>
             <div id="forecast"></div>

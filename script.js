@@ -16,6 +16,9 @@ searchButton.addEventListener('click', () => {
         showLoading();
         getWeather(city);
         getForecast(city);
+        
+        // Animate search container
+        document.getElementById('search-container').classList.add('animate');
     }
 });
 
@@ -25,6 +28,9 @@ geolocationButton.addEventListener('click', () => {
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
             getWeatherByCoordinates(lat, lon);
+            
+            // Animate search container
+            document.getElementById('search-container').classList.add('animate');
         });
     } else {
         showError('Geolocation is not supported by this browser.');

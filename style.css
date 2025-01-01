@@ -30,3 +30,17 @@ body.dark-mode {
 .btn-light.dark-mode {
     background-color: #007bff; /* Button color in dark mode */
 }
+
+/* Search Bar Styles */
+#search-container {
+    transition: transform 0.5s ease-in-out; /* Smooth transition for search bar */
+}
+
+#search-container.animate {
+    transform: translateY(-20px); /* Move up when searching */
+}
+
+/* Rounded Corners */
+.rounded-pill {
+   border-radius: 30px !important; /* Smooth rounding for buttons and input */
+}
