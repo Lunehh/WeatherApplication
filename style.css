@@ -27,10 +27,6 @@ body.dark-mode {
     background-color: #1e1e2f; /* Dark mode container */
 }
 
-.btn-light.dark-mode {
-    background-color: #007bff; /* Button color in dark mode */
-}
-
 /* Search Bar Styles */
 #search-container {
     transition: transform 0.5s ease-in-out; /* Smooth transition for search bar */
@@ -59,4 +55,9 @@ body.dark-mode {
    margin: 0 10px; /* Space between forecast items */
    text-align: center;
    width: 100px; /* Fixed width for uniformity */
+}
+
+/* Improved visibility for dark mode */
+.forecast-item img {
+   max-width: 50px; /* Adjust icon size in forecast items */
 }

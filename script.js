@@ -1,4 +1,4 @@
-const apiKey = '7c9a4efdbddda6de5a761b925ed04517'; // Replace with your OpenWeather API key
+const apiKey = '7c9a4efdbddda6de5a761b925ed04517'; // OpenWeather API key
 const searchButton = document.getElementById('search');
 const geolocationButton = document.getElementById('geolocation');
 const toggleModeButton = document.getElementById('toggle-mode');
@@ -38,7 +38,53 @@ geolocationButton.addEventListener('click', () => {
 });
 
 toggleModeButton.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+
+    // Adjust button text based on mode
+    if (body.classList.contains('dark-mode')) {
+        toggleModeButton.textContent = 'Switch to Light Mode';
+        // Change button colors for dark mode
+        toggleModeButton.classList.remove('btn-light');
+        toggleModeButton.classList.add('btn-dark');
+        
+        // Change input and button styles to avoid white squares
+        document.querySelectorAll('.form-control').forEach(input => {
+            input.style.backgroundColor = '#333';
+            input.style.color = '#fff';
+            input.style.borderColor = '#555';
+        });
+        
+        document.querySelectorAll('.btn-primary').forEach(btn => {
+            btn.style.backgroundColor = '#007bff';
+            btn.style.color = '#fff';
+        });
+        
+        document.querySelectorAll('.btn-secondary').forEach(btn => {
+            btn.style.backgroundColor = '#6c757d';
+            btn.style.color = '#fff';
+        });
+        
+    } else {
+        toggleModeButton.textContent = 'Switch to Dark Mode';
+        
+        // Reset input and button styles for light mode
+        document.querySelectorAll('.form-control').forEach(input => {
+            input.style.backgroundColor = '#fff';
+            input.style.color = '#333';
+            input.style.borderColor = '#ced4da';
+        });
+        
+        document.querySelectorAll('.btn-primary').forEach(btn => {
+            btn.style.backgroundColor = '';
+            btn.style.color = '';
+        });
+        
+        document.querySelectorAll('.btn-secondary').forEach(btn => {
+            btn.style.backgroundColor = '';
+            btn.style.color = '';
+        });
+    }
 });
 
 // Fetch Weather Data
