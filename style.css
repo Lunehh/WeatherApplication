@@ -1,12 +1,12 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0; /* Light mode background */
+    background-color: #e0e0e0; /* Light mode background */
     color: #333; /* Light mode text color */
 }
 
 .container {
-    background-color: white; /* Light mode container */
+    background-color: #ffffff; /* Light mode container */
 }
 
 .hidden {
@@ -19,12 +19,12 @@ body {
 
 /* Dark Mode Styles */
 body.dark-mode {
-    background-color: #1e1e2f; /* Dark mode background */
-    color: #d4bfff; /* Dark mode text color */
+    background-color: #121212; /* Dark mode background */
+    color: #ffffff; /* Dark mode text color */
 }
 
 .container.dark-mode {
-    background-color: #2c2c44; /* Dark mode container */
+    background-color: #1e1e2f; /* Dark mode container */
 }
 
 .btn-light.dark-mode {
@@ -43,4 +43,20 @@ body.dark-mode {
 /* Rounded Corners */
 .rounded-pill {
    border-radius: 30px !important; /* Smooth rounding for buttons and input */
+}
+
+/* Forecast Styles */
+#forecast {
+   display: flex; /* Flexbox for horizontal layout */
+   justify-content: center;
+   margin-top: 20px;
+}
+
+.forecast-item {
+   background-color: #f8f9fa; /* Light gray background for forecast items */
+   border-radius: 10px;
+   padding: 10px;
+   margin: 0 10px; /* Space between forecast items */
+   text-align: center;
+   width: 100px; /* Fixed width for uniformity */
 }
