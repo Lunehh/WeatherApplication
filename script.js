@@ -3,6 +3,7 @@ const searchButton = document.getElementById('search');
 const geolocationButton = document.getElementById('geolocation');
 const cityInput = document.getElementById('city');
 const weatherInfo = document.getElementById('weather-info');
+const todayForecastInfo = document.getElementById('today-forecast-info');
 const forecastInfo = document.getElementById('forecast-info');
 const errorMessage = document.getElementById('error-message');
 const loadingIndicator = document.getElementById('loading');
