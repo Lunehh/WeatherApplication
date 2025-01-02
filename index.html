@@ -30,7 +30,18 @@
             <img id="weather-icon" src="" alt="">
         </div>
 
-        <!-- Forecast Section -->
+        <!-- Today's Forecast Section -->
+        <div id="today-forecast-info" class="hidden text-center mt-4 forecast-item">
+            <h3>Today's Forecast</h3>
+            <div>
+                <p>Temperature: ${Math.round(data.main.temp)}°C</p>
+                <p>Humidity: ${data.main.humidity}%</p>
+                <p>Wind Speed: ${data.wind.speed} m/s</p>
+                <img src='http://openweathermap.org/img/wn/${data.weather[0].icon}.png' alt='Weather Icon'>
+            </div>
+        </div>
+
+        <!-- 5-Day Forecast Section -->
         <div id="forecast-info" class="hidden text-center mt-4">
             <h3>5-Day Forecast</h3>
             <div id="forecast" class="d-flex justify-content-center"></div> <!-- Flexbox for horizontal layout -->
