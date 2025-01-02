@@ -23,7 +23,7 @@ searchButton.addEventListener('click', () => {
         
         // Animate search container
         document.getElementById('search-container').classList.add('animate');
-        
+
         // Clear suggestions
         suggestionsList.innerHTML = '';
         suggestionsList.classList.add('hidden');
@@ -39,7 +39,7 @@ geolocationButton.addEventListener('click', () => {
             
             // Animate search container
             document.getElementById('search-container').classList.add('animate');
-            
+
             // Clear suggestions
             suggestionsList.innerHTML = '';
             suggestionsList.classList.add('hidden');
@@ -108,7 +108,16 @@ function getWeather(city) {
                 showError('City not found');
                 return;
             }
+            
             displayWeather(data);
+            
+            // Show detailed weather information including humidity and wind speed
+            const humidityElem = document.getElementById('humidity');
+            const windSpeedElem = document.getElementById('wind-speed');
+            
+            humidityElem.textContent = data.main.humidity; // Humidity percentage
+            windSpeedElem.textContent = data.wind.speed; // Wind speed in m/s
+            
         })
         .catch(error => {
             hideLoading();
@@ -124,11 +133,19 @@ function getWeatherByCoordinates(lat, lon) {
         .then(data => {
             hideLoading();
             displayWeather(data);
-        })
-        .catch(error => {
-            hideLoading();
-            showError('Error fetching weather data');
-        });
+            
+             // Show detailed weather information including humidity and wind speed
+             const humidityElem = document.getElementById('humidity');
+             const windSpeedElem = document.getElementById('wind-speed');
+             
+             humidityElem.textContent = data.main.humidity; // Humidity percentage
+             windSpeedElem.textContent = data.wind.speed; // Wind speed in m/s
+            
+         })
+         .catch(error => {
+             hideLoading();
+             showError('Error fetching weather data');
+         });
 }
 
 // Fetch Forecast Data
@@ -148,15 +165,16 @@ function displayWeather(data) {
     const cityName = document.getElementById('city-name');
     const temperature = document.getElementById('temperature');
     const description = document.getElementById('description');
-    const weatherIcon = document.getElementById('weather-icon');
     
     cityName.textContent = data.name;
     temperature.textContent = `${Math.round(data.main.temp)}°C`;
     description.textContent = data.weather[0].description;
+
+    const weatherIcon = document.getElementById('weather-icon');
     
     weatherIcon.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
 
-    weatherInfo.classList.remove('hidden');
+    weatherInfo.classList.remove('hidden'); // Show weather info
 }
 
 // Display Forecast Data
