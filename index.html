@@ -3,51 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Weather App">
-    <meta name="keywords" content="weather, app, JavaScript">
-    <meta name="author" content="Luneh">
     <title>Weather App</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="text-center">Weather App</h1>
-        <div class="input-group mb-3" id="search-container">
-            <input type="text" id="city" class="form-control rounded-pill" placeholder="Enter City">
-            <div class="input-group-append">
-                <button id="search" class="btn btn-primary rounded-pill">Search</button>
-            </div>
-        </div>
-        <button id="geolocation" class="btn btn-secondary rounded-pill">Use My Location</button>
-        <button id="toggle-mode" class="btn btn-light rounded-pill">Switch to Dark Mode</button>
-
-        <div id="weather-info" class="hidden text-center mt-4">
-            <h2 id="city-name"></h2>
-            <p id="temperature" class="lead"></p>
-            <p id="description"></p>
-            <img id="weather-icon" src="" alt="">
-        </div>
-
-        <!-- Forecast Section -->
-        <div id="forecast-info" class="hidden text-center mt-4">
-            <h3>5-Day Forecast</h3>
-            <div id="forecast" class="d-flex justify-content-center"></div> <!-- Flexbox for horizontal layout -->
-        </div>
-
-        <p id="error-message" class="text-danger hidden"></p>
-
+    <div class="container">
         <!-- Loading Indicator -->
-        <div id="loading" class="hidden text-center">
-            <p>Loading...</p>
+        <div id="loading" class="hidden">Loading...</div>
+
+        <!-- Search Container -->
+        <div id="search-container">
+            <input 
+                type="text" 
+                id="search-bar" 
+                class="rounded-pill" 
+                placeholder="Search for a city..." 
+                oninput="handleSuggestions()"
+            >
+            <div id="suggestion-bar" class="hidden"></div>
         </div>
+
+        <!-- Forecast Container -->
+        <div id="forecast" class="hidden"></div>
     </div>
 
-    <!-- YouTube Video Embed for Background Music -->
-    <!-- Set width and height to 0 to hide the video but keep audio playing -->
-    <iframe width="0" height="0" src="https://www.youtube.com/embed/WxPOSrrWjJY?autoplay=1&loop=1&playlist=WxPOSrrWjJY" frameborder="0" allowfullscreen></iframe>
-
-    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>

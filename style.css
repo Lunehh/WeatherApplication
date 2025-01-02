@@ -1,8 +1,11 @@
+/* Base Styles */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #e0e0e0; /* Light mode background */
     color: #333; /* Light mode text color */
+    --hover-bg-light: #ddd;
+    --hover-bg-dark: #444;
 }
 
 .container {
@@ -15,6 +18,20 @@ body {
 
 #loading {
     font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Center vertically */
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /* Dark Mode Styles */
@@ -29,6 +46,7 @@ body.dark-mode {
 
 /* Search Bar Styles */
 #search-container {
+    position: relative;
     transition: transform 0.5s ease-in-out; /* Smooth transition for search bar */
 }
 
@@ -36,28 +54,107 @@ body.dark-mode {
     transform: translateY(-20px); /* Move up when searching */
 }
 
+#search-bar {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+}
+
+#suggestion-bar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#suggestion-bar.dark-mode {
+    background-color: #2a2a3b; /* Dark mode suggestion bar */
+}
+
+.suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.suggestion-item:hover {
+    background-color: var(--hover-bg-light);
+}
+
+body.dark-mode .suggestion-item:hover {
+    background-color: var(--hover-bg-dark);
+}
+
 /* Rounded Corners */
 .rounded-pill {
-   border-radius: 30px !important; /* Smooth rounding for buttons and input */
+    border-radius: 30px !important; /* Smooth rounding for buttons and input */
+}
+
+.rounded-pill:hover {
+    background-color: var(--hover-bg-light);
+    cursor: pointer;
+}
+
+body.dark-mode .rounded-pill:hover {
+    background-color: var(--hover-bg-dark);
 }
 
 /* Forecast Styles */
 #forecast {
-   display: flex; /* Flexbox for horizontal layout */
-   justify-content: center;
-   margin-top: 20px;
+    display: flex; /* Flexbox for horizontal layout */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    justify-content: center;
+    margin-top: 20px;
+    gap: 15px; /* Add space between forecast items */
 }
 
 .forecast-item {
-   background-color: #f8f9fa; /* Light gray background for forecast items */
-   border-radius: 10px;
-   padding: 10px;
-   margin: 0 10px; /* Space between forecast items */
-   text-align: center;
-   width: 100px; /* Fixed width for uniformity */
+    background-color: #f8f9fa; /* Light gray background for forecast items */
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    width: 120px; /* Fixed width for uniformity */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, background-color 0.3s;
 }
 
-/* Improved visibility for dark mode */
+.forecast-item:hover {
+    background-color: #ececec; /* Light hover */
+    transform: scale(1.05); /* Subtle zoom */
+}
+
+body.dark-mode .forecast-item:hover {
+    background-color: #2a2a3b; /* Dark hover */
+}
+
 .forecast-item img {
-   max-width: 50px; /* Adjust icon size in forecast items */
+    max-width: 50px; /* Adjust icon size in forecast items */
+}
+
+.forecast-item-details {
+    font-size: 0.9rem;
+    color: #666; /* Subtle detail color */
+}
+
+body.dark-mode .forecast-item-details {
+    color: #aaa;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #forecast {
+        flex-direction: column; /* Vertical layout for smaller screens */
+        align-items: center;
+    }
+
+    .forecast-item {
+        width: 80%; /* Adjust width for smaller devices */
+    }
 }
