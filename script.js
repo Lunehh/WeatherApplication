@@ -1,7 +1,6 @@
 const apiKey = '7c9a4efdbddda6de5a761b925ed04517'; // Replace with your OpenWeather API key
 const searchButton = document.getElementById('search');
 const geolocationButton = document.getElementById('geolocation');
-const toggleModeButton = document.getElementById('toggle-mode');
 const cityInput = document.getElementById('city');
 const weatherInfo = document.getElementById('weather-info');
 const forecastInfo = document.getElementById('forecast-info');
@@ -46,53 +45,6 @@ geolocationButton.addEventListener('click', () => {
         });
     } else {
         showError('Geolocation is not supported by this browser.');
-    }
-});
-
-toggleModeButton.addEventListener('click', () => {
-    const body = document.body;
-    body.classList.toggle('dark-mode');
-
-    // Adjust button text based on mode
-    if (body.classList.contains('dark-mode')) {
-        toggleModeButton.textContent = 'Switch to Light Mode';
-        
-        // Change input and button styles to avoid white squares
-        document.querySelectorAll('.form-control').forEach(input => {
-            input.style.backgroundColor = '#333';
-            input.style.color = '#fff';
-            input.style.borderColor = '#555';
-        });
-        
-        document.querySelectorAll('.btn-primary').forEach(btn => {
-            btn.style.backgroundColor = '#007bff';
-            btn.style.color = '#fff';
-        });
-        
-        document.querySelectorAll('.btn-secondary').forEach(btn => {
-            btn.style.backgroundColor = '#6c757d';
-            btn.style.color = '#fff';
-        });
-        
-    } else {
-        toggleModeButton.textContent = 'Switch to Dark Mode';
-        
-        // Reset input and button styles for light mode
-        document.querySelectorAll('.form-control').forEach(input => {
-            input.style.backgroundColor = '#fff';
-            input.style.color = '#333';
-            input.style.borderColor = '#ced4da';
-        });
-        
-        document.querySelectorAll('.btn-primary').forEach(btn => {
-            btn.style.backgroundColor = '';
-            btn.style.color = '';
-        });
-        
-        document.querySelectorAll('.btn-secondary').forEach(btn => {
-            btn.style.backgroundColor = '';
-            btn.style.color = '';
-        });
     }
 });
 
@@ -165,12 +117,11 @@ function displayWeather(data) {
     const cityName = document.getElementById('city-name');
     const temperature = document.getElementById('temperature');
     const description = document.getElementById('description');
-    
+
     cityName.textContent = data.name;
     temperature.textContent = `${Math.round(data.main.temp)}°C`;
     description.textContent = data.weather[0].description;
 
-    
 }
 
 // Display Forecast Data

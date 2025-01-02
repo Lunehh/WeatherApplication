@@ -17,16 +17,6 @@ body {
     font-size: 1.5rem;
 }
 
-/* Dark Mode Styles */
-body.dark-mode {
-    background-color: #181818; /* Dark mode background */
-    color: #ffffff; /* Dark mode text color */
-}
-
-.container.dark-mode {
-    background-color: #242424; /* Dark mode container */
-}
-
 /* Search Bar Styles */
 #search-container {
     transition: transform 0.5s ease-in-out; /* Smooth transition for search bar */
@@ -42,18 +32,11 @@ body.dark-mode {
    border: 2px solid #333 !important; /* Dark border for better visibility */
 }
 
-/* Input styles for dark mode */
-body.dark-mode .form-control {
-   background-color: #333;
-   color: #fff;
-   border-color: #555;
-}
-
-/* Button styles for dark mode */
-body.dark-mode .btn-primary,
-body.dark-mode .btn-secondary {
-   background-color: #007bff;
-   color: #fff;
+/* Input styles for light mode */
+.form-control {
+   background-color: #fff;
+   color: #333;
+   border-color: #ced4da;
 }
 
 /* Forecast Styles */
@@ -66,7 +49,7 @@ body.dark-mode .btn-secondary {
 .forecast-item {
    background-color: #f8f9fa; /* Light gray background for forecast items */
    border-radius: 10px;
-   padding: 10px;
+   padding: 15px; /* Increased padding for better visibility */
    margin: 0 10px; /* Space between forecast items */
    text-align: center;
    width: 120px; /* Fixed width for uniformity */
