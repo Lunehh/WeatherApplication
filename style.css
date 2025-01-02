@@ -1,12 +1,12 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0; /* Light mode background */
-    color: #333; /* Light mode text color */
+    background-color: #121212; /* Dark mode background */
+    color: #ffffff; /* Light mode text color */
 }
 
 .container {
-    background-color: #ffffff; /* Light mode container */
+    background-color: #1e1e2f; /* Dark mode container */
 }
 
 .hidden {
@@ -29,14 +29,14 @@ body {
 /* Rounded Corners and Borders */
 .rounded-pill {
    border-radius: 30px !important; /* Smooth rounding for buttons and input */
-   border: 2px solid #333 !important; /* Dark border for better visibility */
+   border: 2px solid #ffffff !important; /* Light border for better visibility */
 }
 
-/* Input styles for light mode */
+/* Input styles for dark mode */
 .form-control {
-   background-color: #fff;
-   color: #333;
-   border-color: #ced4da;
+   background-color: #333;
+   color: #fff;
+   border-color: #555;
 }
 
 /* Forecast Styles */
@@ -47,7 +47,7 @@ body {
 }
 
 .forecast-item {
-   background-color: #f8f9fa; /* Light gray background for forecast items */
+   background-color: #282c34; /* Dark gray background for forecast items */
    border-radius: 10px;
    padding: 15px; /* Increased padding for better visibility */
    margin: 0 10px; /* Space between forecast items */
