@@ -1,4 +1,4 @@
-const apiKey = '7c9a4efdbddda6de5a761b925ed04517'; // Replace with your OpenWeather API key
+const apiKey = 'YOUR_API_KEY'; // Replace with your OpenWeather API key
 const searchButton = document.getElementById('search');
 const geolocationButton = document.getElementById('geolocation');
 const toggleModeButton = document.getElementById('toggle-mode');
@@ -111,18 +111,18 @@ function getWeather(city) {
             
             displayWeather(data);
             
-            // Show detailed weather information including humidity and wind speed
-            const humidityElem = document.getElementById('humidity');
-            const windSpeedElem = document.getElementById('wind-speed');
+             // Show detailed weather information including humidity and wind speed
+             const humidityElem = document.getElementById('humidity');
+             const windSpeedElem = document.getElementById('wind-speed');
+             
+             humidityElem.textContent = data.main.humidity; // Humidity percentage
+             windSpeedElem.textContent = data.wind.speed; // Wind speed in m/s
             
-            humidityElem.textContent = data.main.humidity; // Humidity percentage
-            windSpeedElem.textContent = data.wind.speed; // Wind speed in m/s
-            
-        })
-        .catch(error => {
-            hideLoading();
-            showError('Error fetching weather data');
-        });
+         })
+         .catch(error => {
+             hideLoading();
+             showError('Error fetching weather data');
+         });
 }
 
 function getWeatherByCoordinates(lat, lon) {
@@ -170,11 +170,7 @@ function displayWeather(data) {
     temperature.textContent = `${Math.round(data.main.temp)}°C`;
     description.textContent = data.weather[0].description;
 
-    const weatherIcon = document.getElementById('weather-icon');
     
-    weatherIcon.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
-
-    weatherInfo.classList.remove('hidden'); // Show weather info
 }
 
 // Display Forecast Data
