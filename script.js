@@ -1,4 +1,4 @@
-const apiKey = 'YOUR_API_KEY'; // Replace with your OpenWeather API key
+const apiKey = '7c9a4efdbddda6de5a761b925ed04517'; // Replace with your OpenWeather API key
 const searchButton = document.getElementById('search');
 const geolocationButton = document.getElementById('geolocation');
 const toggleModeButton = document.getElementById('toggle-mode');
