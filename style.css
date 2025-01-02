@@ -1,160 +1,57 @@
-/* Base Styles */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #e0e0e0; /* Light mode background */
-    color: #333; /* Light mode text color */
-    --hover-bg-light: #ddd;
-    --hover-bg-dark: #444;
-}
-
-.container {
-    background-color: #ffffff; /* Light mode container */
+    background-color: #e0e0e0;
+    color: #333;
 }
 
 .hidden {
-    display: none; /* Keeps it hidden by default */
+    display: none;
 }
 
 #loading {
     font-size: 1.5rem;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#search-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Center vertically */
-    animation: fadeIn 1s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-/* Dark Mode Styles */
-body.dark-mode {
-    background-color: #121212; /* Dark mode background */
-    color: #ffffff; /* Dark mode text color */
-}
-
-.container.dark-mode {
-    background-color: #1e1e2f; /* Dark mode container */
-}
-
-/* Search Bar Styles */
-#search-container {
-    position: relative;
-    transition: transform 0.5s ease-in-out; /* Smooth transition for search bar */
-}
-
-#search-container.animate {
-    transform: translateY(-20px); /* Move up when searching */
-}
-
-#search-bar {
-    position: relative;
-    width: 100%;
-    padding: 10px;
-    border-radius: 30px;
-    border: 1px solid #ccc;
-}
-
-#suggestion-bar {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: #ffffff;
-    border-radius: 0 0 10px 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 10;
-    max-height: 200px;
-    overflow-y: auto;
-}
-
-#suggestion-bar.dark-mode {
-    background-color: #2a2a3b; /* Dark mode suggestion bar */
-}
-
-.suggestion-item {
-    padding: 10px;
-    cursor: pointer;
-}
-
-.suggestion-item:hover {
-    background-color: var(--hover-bg-light);
-}
-
-body.dark-mode .suggestion-item:hover {
-    background-color: var(--hover-bg-dark);
-}
-
-/* Rounded Corners */
-.rounded-pill {
-    border-radius: 30px !important; /* Smooth rounding for buttons and input */
-}
-
-.rounded-pill:hover {
-    background-color: var(--hover-bg-light);
-    cursor: pointer;
-}
-
-body.dark-mode .rounded-pill:hover {
-    background-color: var(--hover-bg-dark);
-}
-
-/* Forecast Styles */
-#forecast {
-    display: flex; /* Flexbox for horizontal layout */
-    flex-wrap: wrap; /* Allow wrapping for smaller screens */
-    justify-content: center;
     margin-top: 20px;
-    gap: 15px; /* Add space between forecast items */
+}
+
+#city-input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+#search-btn {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#forecast {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px;
 }
 
 .forecast-item {
-    background-color: #f8f9fa; /* Light gray background for forecast items */
+    background-color: #f8f9fa;
     border-radius: 10px;
-    padding: 15px;
+    padding: 10px;
+    margin: 10px;
     text-align: center;
-    width: 120px; /* Fixed width for uniformity */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, background-color 0.3s;
-}
-
-.forecast-item:hover {
-    background-color: #ececec; /* Light hover */
-    transform: scale(1.05); /* Subtle zoom */
-}
-
-body.dark-mode .forecast-item:hover {
-    background-color: #2a2a3b; /* Dark hover */
-}
-
-.forecast-item img {
-    max-width: 50px; /* Adjust icon size in forecast items */
-}
-
-.forecast-item-details {
-    font-size: 0.9rem;
-    color: #666; /* Subtle detail color */
-}
-
-body.dark-mode .forecast-item-details {
-    color: #aaa;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    #forecast {
-        flex-direction: column; /* Vertical layout for smaller screens */
-        align-items: center;
-    }
-
-    .forecast-item {
-        width: 80%; /* Adjust width for smaller devices */
-    }
+    width: 120px;
 }

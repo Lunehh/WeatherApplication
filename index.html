@@ -3,30 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
+    <title>Weather Forecast</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Loading Indicator -->
-        <div id="loading" class="hidden">Loading...</div>
-
-        <!-- Search Container -->
-        <div id="search-container">
-            <input 
-                type="text" 
-                id="search-bar" 
-                class="rounded-pill" 
-                placeholder="Search for a city..." 
-                oninput="handleSuggestions()"
-            >
-            <div id="suggestion-bar" class="hidden"></div>
-        </div>
-
-        <!-- Forecast Container -->
-        <div id="forecast" class="hidden"></div>
+    <div id="search-container">
+        <input type="text" id="city-input" placeholder="Enter city name" autocomplete="off">
+        <button id="search-btn" class="rounded-pill">Search</button>
+        <ul id="suggestions" class="hidden"></ul>
     </div>
-
+    <div id="loading" class="hidden">Loading...</div>
+    <div id="forecast" class="hidden"></div>
     <script src="script.js"></script>
 </body>
 </html>

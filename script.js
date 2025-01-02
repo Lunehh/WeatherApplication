@@ -1,8 +1,9 @@
-const apiKey = "7c9a4efdbddda6de5a761b925ed04517"; // Replace with your weather API key
-const searchBar = document.getElementById("search-bar");
-const suggestionBar = document.getElementById("suggestion-bar");
-const forecastContainer = document.getElementById("forecast");
+const apiKey = "YOUR_API_KEY"; // Replace with your actual API key
+const searchBtn = document.getElementById("search-btn");
+const cityInput = document.getElementById("city-input");
 const loading = document.getElementById("loading");
+const forecastContainer = document.getElementById("forecast");
+const suggestions = document.getElementById("suggestions");
 
 async function fetchWeather(city) {
     try {
@@ -10,94 +11,69 @@ async function fetchWeather(city) {
         
         loading.classList.remove("hidden");
         forecastContainer.classList.add("hidden");
-        console.log(`Fetching weather for: ${city}`);
+        suggestions.classList.add("hidden");
 
         const response = await fetch(
             `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`
         );
 
         if (!response.ok) {
-            console.error("API response error:", response.status);
             throw new Error("City not found");
         }
 
         const data = await response.json();
-        console.log("Weather data received:", data);
         displayForecast(data);
     } catch (error) {
-        console.error("Error fetching weather:", error.message);
         alert(error.message);
     } finally {
         loading.classList.add("hidden");
-        console.log("Loading hidden");
     }
 }
 
 function displayForecast(data) {
-    forecastContainer.innerHTML = "";
-    data.list.slice(0, 5).forEach((item) => {
+    forecastContainer.innerHTML = ""; // Clear previous results
+    forecastContainer.classList.remove("hidden");
+
+    const forecasts = data.list.slice(0, 5); // Show 5 forecasts
+
+    forecasts.forEach(item => {
         const forecastItem = document.createElement("div");
         forecastItem.className = "forecast-item";
-
-        const date = new Date(item.dt_txt).toLocaleString("en-US", {
-            weekday: "short",
-            hour: "numeric",
-        });
-
         forecastItem.innerHTML = `
-            <h3>${data.city.name}</h3>
-            <p>${date}</p>
+            <p>${new Date(item.dt * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
             <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png" alt="${item.weather[0].description}">
+            <p>${item.main.temp.toFixed(1)}°C</p>
             <p>${item.weather[0].description}</p>
-            <div class="forecast-item-details">
-                <p>Temp: ${item.main.temp}°C</p>
-                <p>Feels Like: ${item.main.feels_like}°C</p>
-                <p>Humidity: ${item.main.humidity}%</p>
-                <p>Wind: ${item.wind.speed} m/s</p>
-            </div>
         `;
         forecastContainer.appendChild(forecastItem);
     });
-
-    forecastContainer.classList.remove("hidden");
-    console.log("Forecast displayed");
 }
 
-async function handleSuggestions() {
-    const query = searchBar.value.trim();
-    suggestionBar.innerHTML = "";
+// Suggestion bar for cities
+cityInput.addEventListener("input", async () => {
+    const query = cityInput.value.trim();
 
-    if (query.length < 2) {
-        suggestionBar.classList.add("hidden");
+    if (query.length < 3) {
+        suggestions.classList.add("hidden");
         return;
     }
 
-    try {
-        const response = await fetch(
-            `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${apiKey}`
-        );
+    const response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${apiKey}`);
+    const cities = await response.json();
 
-        const suggestions = await response.json();
-        if (!suggestions.length) return;
-
-        suggestions.forEach((item) => {
-            const suggestionItem = document.createElement("div");
-            suggestionItem.className = "suggestion-item";
-            suggestionItem.textContent = `${item.name}, ${item.country}`;
-            suggestionItem.onclick = () => {
-                searchBar.value = item.name;
-                suggestionBar.classList.add("hidden");
-                fetchWeather(item.name);
-            };
-            suggestionBar.appendChild(suggestionItem);
+    suggestions.innerHTML = "";
+    cities.forEach(city => {
+        const li = document.createElement("li");
+        li.textContent = `${city.name}, ${city.country}`;
+        li.addEventListener("click", () => {
+            cityInput.value = city.name;
+            suggestions.classList.add("hidden");
         });
+        suggestions.appendChild(li);
+    });
 
-        suggestionBar.classList.remove("hidden");
-    } catch (error) {
-        console.error("Error fetching suggestions:", error);
-    }
-}
-
-searchBar.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") fetchWeather(searchBar.value.trim());
+    suggestions.classList.remove("hidden");
 });
+
+// Trigger fetchWeather on button click
+searchBtn.addEventListener("click", () => fetchWeather(cityInput.value));
