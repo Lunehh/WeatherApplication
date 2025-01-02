@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Weather App</h1> <!-- Added margin-bottom to separate from search bar -->
+        <h1 class="text-center mb-4">Weather App</h1>
         <div class="input-group mb-3" id="search-container">
             <input type="text" id="city" class="form-control rounded-pill" placeholder="Enter City" autocomplete="off">
             <div class="input-group-append">
@@ -21,6 +21,7 @@
         </div>
         <button id="geolocation" class="btn btn-secondary rounded-pill">Use My Location</button>
 
+        <!-- Today's Weather Info -->
         <div id="weather-info" class="hidden text-center mt-4">
             <h2 id="city-name"></h2>
             <p id="temperature" class="lead"></p>
@@ -33,12 +34,7 @@
         <!-- Today's Forecast Section -->
         <div id="today-forecast-info" class="hidden text-center mt-4 forecast-item">
             <h3>Today's Forecast</h3>
-            <div>
-                <p>Temperature: ${Math.round(data.main.temp)}°C</p>
-                <p>Humidity: ${data.main.humidity}%</p>
-                <p>Wind Speed: ${data.wind.speed} m/s</p>
-                <img src='http://openweathermap.org/img/wn/${data.weather[0].icon}.png' alt='Weather Icon'>
-            </div>
+            <div id="today-details"></div>
         </div>
 
         <!-- 5-Day Forecast Section -->

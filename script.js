@@ -125,6 +125,19 @@ function displayWeather(data) {
 
 }
 
+// Display Today's Forecast Data
+function displayTodayForecast(data) {
+     todayForecastInfo.classList.remove("hidden"); 
+     const todayDetails = document.getElementById("today-details");
+     todayDetails.innerHTML = `
+         <h4>${data.name}</h4>
+         <p>Temperature: ${Math.round(data.main.temp)}°C</p>
+         <p>Humidity: ${data.main.humidity}%</p>
+         <p>Wind Speed: ${data.wind.speed} m/s</p>
+         <img src='http://openweathermap.org/img/wn/${data.weather[0].icon}.png' alt='Weather Icon'>
+     `;
+}
+
 // Display Forecast Data
 function displayForecast(data) {
    forecastContainer.innerHTML = ''; // Clear previous forecasts
