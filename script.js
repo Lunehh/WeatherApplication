@@ -4,30 +4,37 @@ const suggestionBar = document.getElementById("suggestion-bar");
 const forecastContainer = document.getElementById("forecast");
 const loading = document.getElementById("loading");
 
-// Fetch weather data
 async function fetchWeather(city) {
     try {
+        if (!city) throw new Error("City name cannot be empty.");
+        
         loading.classList.remove("hidden");
         forecastContainer.classList.add("hidden");
+        console.log(`Fetching weather for: ${city}`);
 
         const response = await fetch(
             `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`
         );
 
-        if (!response.ok) throw new Error("City not found");
+        if (!response.ok) {
+            console.error("API response error:", response.status);
+            throw new Error("City not found");
+        }
 
         const data = await response.json();
+        console.log("Weather data received:", data);
         displayForecast(data);
     } catch (error) {
+        console.error("Error fetching weather:", error.message);
         alert(error.message);
     } finally {
         loading.classList.add("hidden");
+        console.log("Loading hidden");
     }
 }
 
-// Display weather forecast
 function displayForecast(data) {
-    forecastContainer.innerHTML = ""; // Clear existing forecasts
+    forecastContainer.innerHTML = "";
     data.list.slice(0, 5).forEach((item) => {
         const forecastItem = document.createElement("div");
         forecastItem.className = "forecast-item";
@@ -53,9 +60,9 @@ function displayForecast(data) {
     });
 
     forecastContainer.classList.remove("hidden");
+    console.log("Forecast displayed");
 }
 
-// Handle search suggestions
 async function handleSuggestions() {
     const query = searchBar.value.trim();
     suggestionBar.innerHTML = "";
@@ -91,7 +98,6 @@ async function handleSuggestions() {
     }
 }
 
-// Fetch weather when pressing Enter
 searchBar.addEventListener("keypress", (e) => {
     if (e.key === "Enter") fetchWeather(searchBar.value.trim());
 });
