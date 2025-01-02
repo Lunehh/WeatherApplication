@@ -1,57 +1,76 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #e0e0e0;
-    color: #333;
+    background-color: #e0e0e0; /* Light mode background */
+    color: #333; /* Light mode text color */
+}
+
+.container {
+    background-color: #ffffff; /* Light mode container */
 }
 
 .hidden {
-    display: none;
+    display: none; /* Keeps it hidden by default */
 }
 
 #loading {
     font-size: 1.5rem;
-    text-align: center;
-    margin-top: 20px;
 }
 
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212; /* Dark mode background */
+    color: #ffffff; /* Dark mode text color */
+}
+
+.container.dark-mode {
+    background-color: #1e1e2f; /* Dark mode container */
+}
+
+/* Search Bar Styles */
 #search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
+    transition: transform 0.5s ease-in-out; /* Smooth transition for search bar */
 }
 
-#city-input {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    outline: none;
+#search-container.animate {
+    transform: translateY(-20px); /* Move up when searching */
 }
 
-#search-btn {
-    margin-left: 10px;
-    padding: 10px 20px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 20px;
-    cursor: pointer;
+/* Rounded Corners */
+.rounded-pill {
+   border-radius: 30px !important; /* Smooth rounding for buttons and input */
 }
 
+/* Forecast Styles */
 #forecast {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 20px;
+   display: flex; /* Flexbox for horizontal layout */
+   justify-content: center;
+   margin-top: 20px;
 }
 
 .forecast-item {
-    background-color: #f8f9fa;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
-    text-align: center;
-    width: 120px;
+   background-color: #f8f9fa; /* Light gray background for forecast items */
+   border-radius: 10px;
+   padding: 10px;
+   margin: 0 10px; /* Space between forecast items */
+   text-align: center;
+   width: 100px; /* Fixed width for uniformity */
+}
+
+/* Suggestions Dropdown Styles */
+#suggestions {
+   position: absolute;
+   z-index: 1000;
+   width: calc(100% - 30px); /* Adjust width to fit input field */
+   max-height: 150px;
+   overflow-y: auto;
+}
+
+.suggestion-item {
+   cursor: pointer;
+}
+
+/* Improved visibility for dark mode */
+.forecast-item img {
+   max-width: 50px; /* Adjust icon size in forecast items */
 }
