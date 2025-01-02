@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #e0e0e0; /* Light mode background */
+    background-color: #f0f0f0; /* Light mode background */
     color: #333; /* Light mode text color */
 }
 
@@ -52,7 +52,7 @@ body {
    padding: 15px; /* Increased padding for better visibility */
    margin: 0 10px; /* Space between forecast items */
    text-align: center;
-   width: 120px; /* Fixed width for uniformity */
+   width: 150px; /* Increased width for uniformity */
 }
 
 /* Suggestions Dropdown Styles */
